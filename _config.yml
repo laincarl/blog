@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: replica
+theme: landscape
 
 # Google Analytics
 ga: # GA code UA-XXXXXXXX-X
@@ -78,19 +78,4 @@ marked:
   smartLists: true
   smartypants: true
 
-gcs: # GOOGLE CUSTOM SEARCH
-baidutongji: # BAIDU TONGJI CODE
-disqus: # DISQUS ID
-
-location: Shang Hai
-email: laincarl@gmail.com
-
-avatar: https://avatars2.githubusercontent.com/u/19968779?s=40&v=460
-social:
-  github: https://github.com/laincarl
-#  weibo: http://weibo.com/206663121
-  linkedin:
-
-# flagcounter
-flagcounter_href: # https://info.flagcounter.com/xxxx
-flagcounter_img_src: # https://s01.flagcounter.com/xxxx
+  
