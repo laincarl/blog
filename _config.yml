@@ -5,6 +5,8 @@
 # Site
 title: My Blog
 description: My Blog Description
+subtitle: #网站副标题
+keywords: #网站的关键字
 author: laincarl
 language: zh-CN
 timezone: Asia/Shanghai
@@ -13,7 +15,7 @@ favicon: https://assets-cdn.github.com/favicon.ico
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 # url: http://sabrinaluo.com/tech
-root: /tech/
+root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -63,19 +65,4 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: landscape
-
-# Google Analytics
-ga: # GA code UA-XXXXXXXX-X
-
-#marked setting for markdown
-marked:
-  gfm: true
-  pedantic: false
-  sanitize: false
-  tables: true
-  breaks: true
-  smartLists: true
-  smartypants: true
-
-  
+theme: next
