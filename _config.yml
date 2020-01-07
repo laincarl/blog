@@ -14,8 +14,8 @@ favicon: https://assets-cdn.github.com/favicon.ico
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-# url: http://sabrinaluo.com/tech
-root: /
+url: https://laincarl.github.io/blog/
+root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
