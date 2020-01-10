@@ -63,7 +63,7 @@ hexo.extend.filter.register('after_post_render', function (data) {
 
         //获取 [title] [url] [link-text]
         var spanStr = figStr.replace("<figcaption><span>", "").replace("</span></figcaption>", "")
-
+        console.log(resultContent)
         //根据空格分割
         var resultContent = spanStr.split(" ")
         if (resultContent.length > 0) {
