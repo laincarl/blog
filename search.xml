@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>PowerShell美化</title>
+    <url>/blog/2020/02/03/PowerShell%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<p>美化结果：</p>
+<img src="/blog/2020/02/03/PowerShell%E7%BE%8E%E5%8C%96/%E7%BE%8E%E5%8C%96%E7%BB%93%E6%9E%9C.png" class="" title="美化结果">
+<p>特性</p>
+<ul>
+<li>支持emoji显示</li>
+<li>颜色方案支持自定义</li>
+<li>支持git状态显示</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="1-安装Windows-Terminal"><a href="#1-安装Windows-Terminal" class="headerlink" title="1. 安装Windows Terminal"></a>1. 安装Windows Terminal</h3><p>直接在windows应用商店搜索安装即可</p>
+<img src="/blog/2020/02/03/PowerShell%E7%BE%8E%E5%8C%96/%E5%AE%89%E8%A3%85termial.png" class="" title="安装termial">
+
+<h3 id="2-安装主题"><a href="#2-安装主题" class="headerlink" title="2. 安装主题"></a>2. 安装主题</h3><p>主题<a href="https://github.com/dracula/powershell" target="_blank" rel="noopener">地址</a>，按照README中的安装方式进行安装<br>安装之后需要设置颜色，打开Windows Terminal的Settings,在schemes中添加</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="json"><figure class="iseeu highlight /json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"background"</span> : <span class="string">"#282A36"</span>,</span><br><span class="line">  <span class="attr">"black"</span> : <span class="string">"#21222C"</span>,</span><br><span class="line">  <span class="attr">"blue"</span> : <span class="string">"#BD93F9"</span>,</span><br><span class="line">  <span class="attr">"brightBlack"</span> : <span class="string">"#6272A4"</span>,</span><br><span class="line">  <span class="attr">"brightBlue"</span> : <span class="string">"#D6ACFF"</span>,</span><br><span class="line">  <span class="attr">"brightCyan"</span> : <span class="string">"#A4FFFF"</span>,</span><br><span class="line">  <span class="attr">"brightGreen"</span> : <span class="string">"#69FF94"</span>,</span><br><span class="line">  <span class="attr">"brightPurple"</span> : <span class="string">"#FF92DF"</span>,</span><br><span class="line">  <span class="attr">"brightRed"</span> : <span class="string">"#FF6E6E"</span>,</span><br><span class="line">  <span class="attr">"brightWhite"</span> : <span class="string">"#FFFFFF"</span>,</span><br><span class="line">  <span class="attr">"brightYellow"</span> : <span class="string">"#FFFFA5"</span>,</span><br><span class="line">  <span class="attr">"cyan"</span> : <span class="string">"#8BE9FD"</span>,</span><br><span class="line">  <span class="attr">"foreground"</span> : <span class="string">"#F8F8F2"</span>,</span><br><span class="line">  <span class="attr">"green"</span> : <span class="string">"#50FA7B"</span>,</span><br><span class="line">  <span class="attr">"name"</span> : <span class="string">"Dracula"</span>,</span><br><span class="line">  <span class="attr">"purple"</span> : <span class="string">"#FF79C6"</span>,</span><br><span class="line">  <span class="attr">"red"</span> : <span class="string">"#FF5555"</span>,</span><br><span class="line">  <span class="attr">"white"</span> : <span class="string">"#F8F8F2"</span>,</span><br><span class="line">  <span class="attr">"yellow"</span> : <span class="string">"#F1FA8C"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>然后在profile中找到powershell,设置<code>colorScheme</code>为<code>Dracula</code>,<code>startingDirectory</code>设置为<code>null</code>，下面贴一个我的完整配置</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="json"><figure class="iseeu highlight /json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// To view the default settings, hold "alt" while clicking on the "Settings" button.</span></span><br><span class="line"><span class="comment">// For documentation on these settings, see: https://aka.ms/terminal-documentation</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"$schema"</span>: <span class="string">"https://aka.ms/terminal-profiles-schema"</span>,</span><br><span class="line">    <span class="attr">"defaultProfile"</span>: <span class="string">"&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;"</span>,</span><br><span class="line">    <span class="attr">"profiles"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"acrylicOpacity"</span>: <span class="number">0.5</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#282A36"</span>,</span><br><span class="line">            <span class="attr">"closeOnExit"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"colorScheme"</span>: <span class="string">"Dracula"</span>,</span><br><span class="line">            <span class="attr">"commandline"</span>: <span class="string">"powershell.exe"</span>,</span><br><span class="line">            <span class="attr">"cursorColor"</span>: <span class="string">"#FFFFFF"</span>,</span><br><span class="line">            <span class="attr">"cursorShape"</span>: <span class="string">"bar"</span>,</span><br><span class="line">            <span class="attr">"fontFace"</span>: <span class="string">"Consolas"</span>,</span><br><span class="line">            <span class="attr">"fontSize"</span>: <span class="number">12</span>,</span><br><span class="line">            <span class="attr">"guid"</span>: <span class="string">"&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;"</span>,</span><br><span class="line">            <span class="attr">"historySize"</span>: <span class="number">9001</span>,</span><br><span class="line">            <span class="attr">"icon"</span>: <span class="string">"ms-appx:///ProfileIcons/&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;.png"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Windows PowerShell"</span>,</span><br><span class="line">            <span class="attr">"padding"</span>: <span class="string">"20, 10, 20, 20"</span>,</span><br><span class="line">            <span class="attr">"snapOnInput"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"useAcrylic"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"startingDirectory"</span>: <span class="literal">null</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile</span></span><br><span class="line">            <span class="attr">"guid"</span>: <span class="string">"&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"cmd"</span>,</span><br><span class="line">            <span class="attr">"commandline"</span>: <span class="string">"cmd.exe"</span>,</span><br><span class="line">            <span class="attr">"hidden"</span>: <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"guid"</span>: <span class="string">"&#123;c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40&#125;"</span>,</span><br><span class="line">            <span class="attr">"hidden"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Ubuntu-18.04"</span>,</span><br><span class="line">            <span class="attr">"source"</span>: <span class="string">"Windows.Terminal.Wsl"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"guid"</span>: <span class="string">"&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;"</span>,</span><br><span class="line">            <span class="attr">"hidden"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Azure Cloud Shell"</span>,</span><br><span class="line">            <span class="attr">"source"</span>: <span class="string">"Windows.Terminal.Azure"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// Add custom color schemes to this array</span></span><br><span class="line">    <span class="attr">"schemes"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#282A36"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#21222C"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#BD93F9"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#6272A4"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#D6ACFF"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#A4FFFF"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#69FF94"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#FF92DF"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#FF6E6E"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#FFFFFF"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#FFFFA5"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#8BE9FD"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#F8F8F2"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#50FA7B"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Dracula"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#FF79C6"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#FF5555"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#F8F8F2"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#F1FA8C"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// Add any keybinding overrides to this array.</span></span><br><span class="line">    <span class="comment">// To unbind a default keybinding, set the command to "unbound"</span></span><br><span class="line">    <span class="attr">"keybindings"</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-将Windows-Terminal加入右键菜单"><a href="#3-将Windows-Terminal加入右键菜单" class="headerlink" title="3. 将Windows Terminal加入右键菜单"></a>3. 将Windows Terminal加入右键菜单</h3><ol>
+<li>新建一个.reg文件</li>
+<li>将以下代码中的用户名替换为你的用户名，然后粘贴进reg文件</li>
+<li>将ico文件<img src="terminal.ico" height="25" width="25" style="display: inline-block;margin: 0 5px -6px 5px;"/>放入正确的路径</li>
+<li>双击运行reg文件</li>
+</ol>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="bash"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=<span class="string">"Windows Terminal here"</span></span><br><span class="line"><span class="string">"Icon"</span>=<span class="string">"C:\\Users\\你的用户名\\AppData\\Local\\Terminal\\terminal.ico"</span></span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\<span class="built_in">command</span>]</span><br><span class="line">@=<span class="string">"C:\\Users\\你的用户名\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe"</span></span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>如何在webpack判断某个包是否存在</title>
+    <url>/blog/2020/01/13/%E5%A6%82%E4%BD%95%E5%9C%A8webpack%E5%88%A4%E6%96%AD%E6%9F%90%E4%B8%AA%E5%8C%85%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/</url>
+    <content><![CDATA[<p>需求：在webpack下，根据有没有前端的某个npm包来实现不同的功能，这种需求一般有两种情况</p>
+<ol>
+<li>判断moduleB是否存在，如果存在则…否则…</li>
+<li>引用一个包，但是这个包有可能<code>不存在</code></li>
+</ol>
+<a id="more"></a>
+
+<p>在webpack中可以使用try catch配合require实现</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="javascript"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> hasModuleB = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">  <span class="built_in">require</span>.resolveWeak(<span class="string">'moduleB'</span>);</span><br><span class="line">  hasModuleB = <span class="literal">true</span>;</span><br><span class="line">&#125;<span class="keyword">catch</span>(error)&#123;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>当moduleB存在时，hasModuleB为true，否则resolveWeak会报错，hasModuleB为false</p>
+<p>同理如果想尝试引用一个<code>不一定存在</code>的包时可以使用以下方式</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="javascript"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> ModuleB = <span class="function"><span class="params">()</span>=&gt;</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">  ModuleB=<span class="built_in">require</span>(<span class="string">'moduleB'</span>).default;</span><br><span class="line">&#125;<span class="keyword">catch</span>(error)&#123;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>当moduleB存在时，ModuleB将会使用包moduleB，否则使用默认值()=&gt;{}</p>
+<p>但是这样写有些麻烦，可读性也不是很好，希望有更加简洁的方式，比如</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="javascript"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> hasModuleB = hasModule(<span class="string">'moduleB'</span>)</span><br><span class="line"><span class="keyword">const</span> moduleB = tryImport(<span class="string">'moduleB'</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>要实现以上的功能可以转化为</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="javascript"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> hasModuleB = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> temp = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="built_in">require</span>.resolveWeak(<span class="string">'moduleB'</span>);</span><br><span class="line">    temp = <span class="literal">true</span>;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;&#125;</span><br><span class="line">  <span class="keyword">return</span> temp;</span><br><span class="line">&#125;()</span><br><span class="line"><span class="keyword">const</span> moduleB = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> temp;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    temp = <span class="built_in">require</span>(<span class="string">'moduleB'</span>).default;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;&#125;</span><br><span class="line">  <span class="keyword">return</span> temp;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></div>
+
+<p>为此，我写了一个<a href="https://github.com/laincarl/babel-plugin-try-import" target="_blank" rel="noopener">babel plugin</a>来完成以上转换。</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>webpack</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>js中的面向对象</title>
+    <url>/blog/2020/01/10/js%E4%B8%AD%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<p>面向对象的几大特征</p>
+<ul>
+<li>继承：隐藏对象的属性和实现细节，仅对外提供公共访问方式，将变化隔离，便于使用，提高复用性和安全性</li>
+<li>封装：提高代码复用性，继承是多态的前提</li>
+<li>多态：父类或接口定义的引用变量可以指向子类或具体实现类的实例对象。提高了程序的拓展性</li>
+</ul>
+<a id="more"></a>
+
+<p>在js中的实现</p>
+<h4 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h4><ol>
+<li>字面量方式</li>
+</ol>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="javascript"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">name</span>:<span class="string">'li'</span> &#125;</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>构造函数方式</li>
+</ol>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="javascript"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建普通对象</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>(&#123; <span class="attr">name</span>:<span class="string">'li'</span> &#125;)</span><br><span class="line"><span class="comment">// 创建特定类型</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> Person(&#123; <span class="attr">name</span>:<span class="string">'li'</span> &#125;)</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>通过Object.create创建</li>
+</ol>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="javascript"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 这种方式创建的对象实际上是放在__proto__上</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="built_in">Object</span>.create(&#123; <span class="attr">name</span>:<span class="string">'li'</span> &#125;)</span><br><span class="line">结果：</span><br><span class="line">&#123;</span><br><span class="line">  __proto__: &#123;</span><br><span class="line">    name:<span class="string">'li'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>js中实现继承的方式有很多种，最终采用的方式是寄生组合式继承模式，继承需要解决的问题有几个</p>
+<ol>
+<li>父类的属性应被复制</li>
+<li>父类方法应该共用</li>
+<li>应该可以检测到继承关系</li>
+</ol>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="javascript"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Extends</span>(<span class="params">ParentClass, ChildClass</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(ParentClass, ChildClass)</span><br><span class="line">  ChildClass.prototype = <span class="built_in">Object</span>.create(ParentClass.prototype, &#123; <span class="attr">constructor</span>: &#123; <span class="attr">value</span>: ChildClass, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125; &#125;);  </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> Child = <span class="function"><span class="keyword">function</span> (<span class="params">_ParentClass</span>) </span>&#123;</span><br><span class="line">  Extends(Parent, Child);</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> _ParentClass.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> Child;</span><br><span class="line">&#125;(Parent)</span><br></pre></td></tr></table></figure></div>
+
+<p>new实现</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="javascript"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myNew</span>(<span class="params">Class</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> obj=&#123;&#125;;</span><br><span class="line">  myNew.target=Class;</span><br><span class="line">  <span class="keyword">var</span> result = Class.apply(obj,<span class="built_in">arguments</span>.slice(<span class="number">1</span>));</span><br><span class="line">  <span class="built_in">Object</span>.setPrototypeOf(obj,Class)</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> result === <span class="string">'object'</span> &amp;&amp; result !== <span class="literal">null</span> ? result : obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="javascript"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line">setPrototypeOf</span><br><span class="line">getPrototypeOf</span><br><span class="line">prototype</span><br><span class="line">__proto__</span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>前端缓存</title>
+    <url>/blog/2020/01/09/%E5%89%8D%E7%AB%AF%E7%BC%93%E5%AD%98/</url>
+    <content><![CDATA[<p>缓存可以分为强缓存和协商缓存</p>
+<ul>
+<li>强缓存：主要用于不变的数据，比如hash处理过的图片，js，css</li>
+<li>协商缓存：主要用于数据不会频繁变动的接口</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="如何启用缓存"><a href="#如何启用缓存" class="headerlink" title="如何启用缓存"></a>如何启用缓存</h3><p>缓存是浏览器和服务器之间进行配合来生效的，缓存由浏览器请求时或服务器返回时指定缓存方式，现代浏览器使用的是header<code>Cache-Control</code></p>
+<h3 id="默认缓存"><a href="#默认缓存" class="headerlink" title="默认缓存"></a>默认缓存</h3><p>如果没有设置缓存方式，浏览器将使用<code>启发式缓存</code>，也就是使用Header中的Date减去Last-Modified的10%作为缓存时间</p>
+<h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h3><p>可以并列几个，例如</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="javascript"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line">Cache-Control: max-age=<span class="number">604800</span></span><br><span class="line">Cache-Control: public</span><br></pre></td></tr></table></figure></div>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>no-cache</td>
+<td>不使用强缓存</td>
+</tr>
+<tr>
+<td>no-store</td>
+<td>任何缓存都不使用</td>
+</tr>
+<tr>
+<td>max-age</td>
+<td>强缓存最长生效时间</td>
+</tr>
+<tr>
+<td>s-maxage</td>
+<td>针对代理商的强缓存最长生效时间</td>
+</tr>
+<tr>
+<td>private</td>
+<td>代理商不进行缓存</td>
+</tr>
+</tbody></table>
+<h3 id="典型的场景（强缓存）"><a href="#典型的场景（强缓存）" class="headerlink" title="典型的场景（强缓存）"></a>典型的场景（强缓存）</h3><p>强缓存是指第二次请求时如果满足条件则使用缓存，<code>不需要</code>进行网络请求，其中的条件就是判断文件是否更改，浏览器可以通过最大生效时间判断<br>以下是一个典型场景</p>
+<ol>
+<li>浏览器发送请求</li>
+<li>服务器返回数据，并附带Response Header，其中包含<code>Cache-Control: max-age=604800</code></li>
+<li>再次遇到相同请求时使用缓存时间和max-age来判断文件是否过期，若不过期则使用缓存，否则进入协商缓存阶段</li>
+</ol>
+<h3 id="典型的场景（协商缓存）"><a href="#典型的场景（协商缓存）" class="headerlink" title="典型的场景（协商缓存）"></a>典型的场景（协商缓存）</h3><p>协商缓存是指第二次请求时如果满足条件则使用缓存，<code>需要</code>进行网络请求，只是减少了文件的数据量传输，这其中有两种方式，一种通过资源的上次修改时间来判断，另一种通过资源生成的哈希码来判断，以下是两种方式的典型场景<br>以下是一个典型场景（使用LastModified）</p>
+<ol>
+<li>浏览器发送请求</li>
+<li>服务器返回数据，并附带Response Header，其中包含<code>Last-Modified: Tue, 07 Jan 2020 01:40:13 GMT</code></li>
+<li>浏览器再次遇到相同请求时，带上 <code>If-Modified-Since: Tue, 07 Jan 2020 01:40:13 GMT</code>,服务器判断资源是否更改，若没有更改直接返回状态码<code>304</code>，否则返回资源和新的last-modified</li>
+<li>浏览器接收到返回值，如果是302状态码，使用缓存，否则使用返回的资源，并更新缓存</li>
+</ol>
+<p>以下是一个典型场景（使用ETag）</p>
+<ol>
+<li>浏览器发送请求</li>
+<li>服务器返回数据，并附带Response Header，其中包含<code>ETag: W/&quot;5e13e17d-54f&quot;</code></li>
+<li>浏览器再次遇到相同请求时，带上 <code>If-None-Match: W/&quot;5e13e17d-54f&quot;</code>,服务器判断资源是否更改，若没有更改直接返回状态码<code>304</code>，否则返回资源和新的ETag</li>
+<li>浏览器接收到返回值，如果是302状态码，使用缓存，否则使用返回的资源，并更新缓存</li>
+</ol>
+<h4 id="两种协商缓存的优劣"><a href="#两种协商缓存的优劣" class="headerlink" title="两种协商缓存的优劣"></a>两种协商缓存的优劣</h4><ul>
+<li>通过last-modified服务器需要进行的计算量很小，但是由于最小单位是秒，所以当资源在短时间内(1s内)频繁更新时可能无法检测出来，或者资源更改了，但是值没变，也无法判断出来</li>
+<li>通过ETag判断时，服务器需要使用资源生成哈希码，会耗费更大的计算力，但是很准确</li>
+</ul>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>去除自动填充背景</title>
+    <url>/blog/2019/09/23/%E5%8E%BB%E9%99%A4%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E8%83%8C%E6%99%AF/</url>
+    <content><![CDATA[<p>浏览器在检测到页面上的input时，如果之前存储了相同name的值，就会自动填充，然而填充时会将input加上一个背景，而这往往不是我们想要的，下面就是几种去掉这个背景的方法</p>
+<a id="more"></a>
+<!-- 文章链接 https://juejin.im/post/5df6eccf6fb9a0163f77c856 -->
+<h3 id="不做处理"><a href="#不做处理" class="headerlink" title="不做处理"></a>不做处理</h3><button class="run-code" data-figure-id= runcode663>运行代码</button><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="html  默认状态"><figure id=runcode663 class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="1-使用内阴影覆盖-如果背景是纯色，没有问题，但是对于背景是渐变则不行"><a href="#1-使用内阴影覆盖-如果背景是纯色，没有问题，但是对于背景是渐变则不行" class="headerlink" title="1.使用内阴影覆盖,如果背景是纯色，没有问题，但是对于背景是渐变则不行"></a>1.使用内阴影覆盖,如果背景是纯色，没有问题，但是对于背景是渐变则不行</h3><button class="run-code" data-figure-id= runcode937>运行代码</button><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="html  内阴影"><figure id=runcode937 class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.clear1</span> &#123;</span></span><br><span class="line">    box-shadow: inset 0 0 0 100px white;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"clear1"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background: linear-gradient(45deg, pink, yellow);padding: 20px 0;display: inline-block;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"clear1"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-使用padding撑开，height为0，并且背景指定渲染到content-box，这样元素的背景就显示不出来了"><a href="#2-使用padding撑开，height为0，并且背景指定渲染到content-box，这样元素的背景就显示不出来了" class="headerlink" title="2.使用padding撑开，height为0，并且背景指定渲染到content-box，这样元素的背景就显示不出来了"></a>2.使用padding撑开，height为0，并且背景指定渲染到content-box，这样元素的背景就显示不出来了</h3><button class="run-code" data-figure-id= runcode720>运行代码</button><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="html  content-box"><figure id=runcode720 class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.clear2</span> &#123;</span></span><br><span class="line">    height: 0;</span><br><span class="line"><span class="css">    <span class="selector-tag">padding</span>: 1<span class="selector-class">.2em</span> 0;</span></span><br><span class="line">    background-clip: content-box;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">  <span class="selector-class">.clear2</span><span class="selector-pseudo">::first-line</span> &#123;</span></span><br><span class="line">    color: red;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"clear2"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background: linear-gradient(45deg, pink, yellow);padding: 20px 0;display: inline-block;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"clear2"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-使用动画，使背景停在最后"><a href="#3-使用动画，使背景停在最后" class="headerlink" title="3.使用动画，使背景停在最后"></a>3.使用动画，使背景停在最后</h3><button class="run-code" data-figure-id= runcode266>运行代码</button><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="html  使用动画"><figure id=runcode266 class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.clear3</span> &#123;</span></span><br><span class="line">    animation: resetBackground forwards;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">  <span class="keyword">@keyframes</span> resetBackground &#123;</span></span><br><span class="line">    to &#123;</span><br><span class="line">      background: transparent;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"clear3"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background: linear-gradient(45deg, pink, yellow);padding: 20px 0;display: inline-block;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"clear3"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+  </entry>
+</search>
