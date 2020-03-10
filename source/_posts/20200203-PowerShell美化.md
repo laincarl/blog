@@ -16,12 +16,12 @@ tags:
 
 <!-- more -->
 
-### 1. 安装Windows Terminal
+### 安装Windows Terminal
 
 直接在windows应用商店搜索安装即可
 {% asset_img 安装termial.png 安装termial %}
 
-### 2. 安装主题
+### 安装主题
 
 主题[地址](https://github.com/dracula/powershell)，按照README中的安装方式进行安装
 安装之后需要设置颜色，打开Windows Terminal的Settings,在schemes中添加
@@ -128,7 +128,7 @@ tags:
 }
 ```
 
-### 3. 将Windows Terminal加入右键菜单
+### 将Windows Terminal加入右键菜单
 
 1. 新建一个.reg文件
 2. 将以下代码中的用户名替换为你的用户名，然后粘贴进reg文件
