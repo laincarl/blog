@@ -70,6 +70,7 @@ includes.call(object, 1)
 ```
 
 这样就可以保证全局变量的安全
+看起来第二种方法好处很多，那么为什么还要使用第一种呢，根据测试第一种代码打包之后大小会小一些，应该是实现上会简单一些
 
 ### 两种polyfill的方法对应的使用方法
 
@@ -112,6 +113,14 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 ```
 
+此方法需要安装的依赖
+
+```shell
+yarn add -D @babel/core @babel/preset-env
+# regenerator-runtime已经被@babel/preset-env所包含
+yarn add core-js
+```
+
 #### 2. 转换法对应的是@babel/runtime-corejs3
 
 但是需要哪个polyfill需要手动引入，所以可以使用`@babel/plugin-transform-runtime`来帮我们自动引入
@@ -141,6 +150,13 @@ import "regenerator-runtime/runtime";
     ]
   ]
 }
+```
+
+此方法需要安装的依赖
+
+```shell
+yarn add -D @babel/core @babel/preset-env @babel/plugin-transform-runtime
+yarn add @babel/runtime-corejs3
 ```
 
 参考：
